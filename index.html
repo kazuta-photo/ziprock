@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang_"ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>zipRock official site</title>
 
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+     
+            body {
+                margin: 0;
+            }
+     
+            .sec-blue {
+                background-color: rgb(0, 140, 255, .5);
+                height: 800px;
+            }
+     
+            .sec-yellow {
+                background-color: rgba(244, 244, 11);
+                height: 800px;
+            }
+     
+            .sec-green {
+                background-color: rgb(129, 243, 129, .5);
+                height: 800px;
+            }
+     
+            /* トップへ戻るボタン */
+            .pagetop {
+                width: 64px;
+                height: 64px;
+                position: fixed;
+                bottom: 8%;
+                right: 2%;
+                transition: all .3s;
+            }
+     
+            .pagetop__link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: #ffffff;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 18px;
+                font-size: bold;
+                line-height: 1.3;
+                color: #333;
+                text-decoration: none;
+            }
+     
+            .pagetop__text {
+                padding-top: 15px;
+                position: relative;
+            }
+     
+                .pagetop__text::before {
+                    content: "〈";
+                    display: inline-block;
+                    position: absolute;
+                    top: -13px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(90deg);
+                }
+     
+                .pagetop__text::after {
+                    content: "〈";
+                    display: inline-block;
+                    position: absolute;
+                    top: -7px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(90deg);
+                }
+     
+            /* TOPボタン出現後のスタイル */
+            .pagetop.fadeIn {
+                opacity: 1;
+                visibility: inherit;
+            }
+        </style>
+         <script>
+             'use strict';
+     
+             {
+                 // データ取得
+                 // DOM取得
+                 // pagetopボタン
+                 const pageTop = document.querySelector('.pagetop');
+                 // トップへ戻るボタンを表示する位置のsection
+                 const secGreen = document.querySelector('.sec-green');
+                 // ビューポートの高さ
+                 const vh = window.innerHeight;
+                 // リセット用変数
+                 let time = null;
+                 // タイマーの秒数
+                 const speed = 200;
+     
+                 // 処理
+                 // イベントで実行する処理
+                 function pageTopAction() {
+                     // スクロールイベントを間引く
+                     clearTimeout(time);
+                     time = setTimeout(function () {
+     
+                         // スクロール量
+                         const scroll = window.pageYOffset;
+                         console.log(scroll);  /* console.logを追加 */
+     
+                         // 要素の位置までの数値
+                         const targetDistance = secGreen.getBoundingClientRect().top;
+                         console.log(targetDistance);  /* console.logを追加 */
+     
+                         // 要素までの絶対位置
+                         const targetPosition = scroll + targetDistance - vh;
+     
+                         // スクロール量がtargetPositionの位置を超えたら
+                         if (targetPosition < scroll) {
+                             pageTop.classList.add('fadeIn');
+                         } else {
+                             pageTop.classList.remove('fadeIn');
+                         }
+     
+                     }, speed); /* setTimeoutを閉じる */
+                 }
+     
+                 // イベント付加
+                 window.addEventListener('scroll', pageTopAction);
+             }
+         </script>
+         <style>
+            .fix-01 {
+                 background: rgba(255, 255, 255, 0.8);
+                 /背景を白色に/ box-shadow:0 2px 8px rgba(30,30,80,.3);
+                 /影。不要なら削除/ left:0;
+                 line-height: 1;
+                 position: fixed;
+                 top: 0;
+                 width: 100%;
+                 z-index: 100;
+                 text-align: center;
+                 padding: 1rem;
+             }
+         </style>
+         <style>
+             body{
+                 background-color:#ffffff
+             }
+         </style>
+         <style>
+             h1 {
+                 font-weight:100
+             }
+         </style>
+         <style>
+             body {
+                 margin: 0;
+             }
+         </style>
+         <style>
+             h1 {
+                 font-size: 60px;
+                 font-family: 游ゴシック;
+                 color: white;
+                 text-align: center;
+             }
+         </style>
+         <style>
+             p {
+                 color:white;
+                 text-align: center;
+             }
+         </style>
+         <style>
+             a {
+                 text-align: center;
+             }
+         </style>
+         <style>
+             div.instagram {
+                 text-align: center;
+             }
+         </style>
+         <style>
+             div.photohito {
+                 text-align: center;
+             }
+         </style>
+         <style>
+             .button019 a {
+                 background: #eee;
+                 border-radius: 3px;
+                 position: relative;
+                 display: flex;
+                 justify-content: space-around;
+                 align-items: center;
+                 margin: 0 auto;
+                 max-width: 280px;
+                 padding: 10px 25px;
+                 color: #313131;
+                 transition: 0.3s ease-in-out;
+                 font-weight: 500;
+             }
+     
+                 .button019 a:after {
+                     content: "";
+                     position: absolute;
+                     top: 50%;
+                     bottom: 0;
+                     right: 2rem;
+                     font-size: 90%;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     transition: right 0.3s;
+                     width: 6px;
+                     height: 6px;
+                     border-top: solid 2px currentColor;
+                     border-right: solid 2px currentColor;
+                     transform: translateY(-50%) rotate(45deg);
+                 }
+     
+                 .button019 a:hover {
+                     background: #6bb6ff;
+                     color: #FFF;
+                 }
+     
+                     .button019 a:hover:after {
+                         right: 1.4rem;
+                     }
+         </style>
+         <style>
+             .fix-01 {
+                 font-family: 游ゴシック;
+             }
+         </style>
+         <style>
+             /** 1. 一般的なヘッダー */
+     .header1 {
+      /* divを横並びにして、.header-logoと.header-menuを等間隔に左右に配置*/
+      display: flex;
+      justify-content: space-between;
+     
+      background: #ffffff;
+      padding: 20px;
+      color: #707070;
+     }
+     
+     .header1 .header-menu a {
+      text-decoration: none;
+      color: #707070;
+      padding: 20px;
+     }
+     .header1 .header-menu a:hover {
+      border-bottom: 2px solid #ffffff;
+      padding-bottom: 10px;
+     }
+     .header1 .header-menu a:hover,
+     .header1 .header-menu a.active {
+      border-bottom: 2px solid #707070;
+      padding-bottom: 10px;
+     }
+     .header-logo {
+         font-size: 80px;
+     }
+     .header-menu {
+         font-size: 20px;
+     }
+     .img2 img {
+       width: 100%;
+       height: 600px;
+       object-fit: cover;
+     }
+         </style>
+     </head>
+     <body>
+         <div class="pagetop">
+             <a href="#" class="pagetop__link">
+                 <span class="pagetop__text">TOP</span>
+             </a>
+         </div>
+         <div class="header1">
+             <div class="header-logo"><img src="https://drive.google.com/file/d/1K3P7NjQsQQwljkFxVedQHchhWoMoKg3N/view"></div>
+             <div class="header-menu">
+               <a href="#" class="active">TOP</a>
+               <a href="#">About</a>
+               <a href="#">Blog</a>
+               <a href="#">Contact</a>
+             </div>
+           </div>
+            <div class="img2"><img src="https://drive.google.com/file/d/1K3P7NjQsQQwljkFxVedQHchhWoMoKg3N/view" style="display:block;margin:auto;" />
+            </div>
+          
+         <br />
+         <br />
+         
+     </body>
+       </html>
+</html>
