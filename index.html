@@ -276,6 +276,20 @@
        object-fit: cover;
      }
          </style>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                pause: 5000, // 画像がスライドするスピード
+                slideWidth: 400, // 画像の横幅
+            });
+        });
+</script>
+
      </head>
      <body>
          <div class="pagetop">
@@ -294,6 +308,12 @@
            </div>
             <div class="img2"><img src="" style="display:block;margin:auto;" />
             </div>
+            <div class="slider">
+<img src="SDIM0636.JPG" alt="">
+<img src="SDIM0634.JPG" alt="">
+<img src="SDIM0637.JPG" alt="">
+<img src="SDIM0638.JPG" alt="">
+</div>
           
          <br />
          <br />
