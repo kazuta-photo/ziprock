@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <title>zipRock official site</title>
 
         <style>
@@ -288,28 +289,29 @@
     }
     </style>
     <style>
-        .full div {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  margin: 0;
-}
-.full div.img01 {
-  background-image: url(SDIM0636.JPG);
-}
-.full div.img02 {
-  background-image: url(SDIM0637.JPG);
-}
-.full div.img03 {
-  background-image: url(SDIM0638.JPG);
-}
-.full .slick-dots {
-    bottom: 4%;
-    z-index: +1;
-}
-    </style>
-
+        .swiper {
+          width: 600px;
+          height: 300px;
+        }
+      </style>
+      <script>
+        const swiper = new Swiper('.swiper', {
+          // パラメータの指定
+          loop: true,
+      
+          // ページネーション
+          pagination: {
+            el: '.swiper-pagination',
+          },
+      
+          // 左右のボタン
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      </script>
+   
      </head>
      <body>
          <div class="pagetop">
@@ -326,26 +328,27 @@
                <a href="#">Contact</a>
               
         </div>
-        <div class="full">
-            <div class="main01"></div>
-            <div class="main02"></div>
-            <div class="main03"></div>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+              <!-- スライド -->
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/1000/450/?random=1" alt="Slide 1">
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/1000/450/?random=2" alt="Slide 2">
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/1000/450/?random=3" alt="Slide 3">
+              </div>
+            </div>
+            <!-- ページネーション -->
+            <div class="swiper-pagination"></div>
+          
+            <!-- 左右のナビゲーションボタン -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
-          <script>
-            $(document).on('ready', function() {
-  $(".full").slick({
-    arrows: false,
-    dots: true,
-    autoplay: true,
-    autoplaySpeed: 1500,
-    speed: 1500,
-    fade: true,
-    pauseOnFocus: false,
-    pauseOnHover: false,
-    pauseOnDotsHover: false,
-  });
-});
-          </script>
+ 
        
         
      
