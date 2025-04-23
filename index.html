@@ -2,7 +2,8 @@
 <html lang_"ja">
     <head>
         <meta charset="UTF-8">
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <script src="lib/jquery-1.7.2.js"></script>
+<script src="lib/jquery.maximage.js"></script>
         <title>zipRock official site</title>
 
         <style>
@@ -277,7 +278,15 @@
        object-fit: cover;
      }
          </style>
-  
+  <style type="text/css">
+    * {
+    margin: 0;
+    padding: 0;
+    }
+    .maximg {
+    display:none;
+    }
+    </style>
 
 
      </head>
@@ -296,12 +305,24 @@
                <a href="#">Contact</a>
               
         </div>
-        <div class="full">
-            <div class="SDIM0636.JPG"></div>
-            <div class="SDIM0634.JPG"></div>
-            <div class="SDIM0637.JPG"></div>
-            <div class="SDIM0638.JPG"></div>
-          </div>
+        <img src="" alt="" class="maximg" title="画像1" />
+<img src="SDIM0636.JPG" alt="" class="maximg" title="画像2" />
+<img src="SDIM0634.JPG" alt="" class="maximg" title="画像3" />
+<img src="SDIM0637.JPG" alt="" class="maximg" title="画像4" />
+<img src="SDIM0638.JPG" alt="" class="maximg" title="画像5" />
+        <script>
+            $(function(){
+jQuery('.maximg').maxImage({
+isBackground: true,
+slideShow: true,
+slideShowTitle: true,
+slideDelay: 5,
+overflow: 'hidden',
+verticalAlign:'top'
+});
+});
+        </script>
+        
      
          
          <style>
@@ -310,55 +331,7 @@
                 
             }
          </style> 
-         <style>
-            .full div {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  margin: 0;
-}
-.full div.img01 {
-  background-image: url(https://125naroom.com/demo/img/simple01.jpg);
-}
-.full div.img02 {
-  background-image: url(https://125naroom.com/demo/img/simple02.jpg);
-}
-.full div.img03 {
-  background-image: url(https://125naroom.com/demo/img/simple03.jpg);
-}
-.full .slick-dots {
-  bottom: 4%;
-  z-index: +1;
-}
-
-/*=============
-base
-==============*/
-html, body {
-  margin: 0;
-  padding: 0;
-}
-* {
-  box-sizing: border-box;
-}
-         </style>
-         <script>
-            $(document).on('ready', function() {
-  $(".full").slick({
-    arrows: false,
-    dots: true,
-    autoplay: true,
-    autoplaySpeed: 1500,
-    speed: 1500,
-    fade: true,
-    pauseOnFocus: false,
-    pauseOnHover: false,
-    pauseOnDotsHover: false,
-  });
-});
-         </script>
-        
+       
 
 		
       
