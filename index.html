@@ -2,15 +2,7 @@
 <html lang_"ja">
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" src="./jquery.js"></script>
-        <script type="text/javascript" src="./jquery.cycle.all.js"></script>
-        <script type="text/javascript" src="./jquery.maximage.js"></script>
-        <link rel="stylesheet" href="./jquery.maximage.css" type="text/css" media="all" />
-        <script type="text/javascript">
-        $(function(){
-            jQuery('#maximage').maximage({});
-        });
-        </script>
+        
         
         <title>zipRock official site</title>
 
@@ -295,7 +287,28 @@
     display:none;
     }
     </style>
-
+    <style>
+        .full div {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+}
+.full div.img01 {
+  background-image: url(SDIM0636.JPG);
+}
+.full div.img02 {
+  background-image: url(SDIM0637.JPG);
+}
+.full div.img03 {
+  background-image: url(SDIM0638.JPG);
+}
+.full .slick-dots {
+    bottom: 4%;
+    z-index: +1;
+}
+    </style>
 
      </head>
      <body>
@@ -313,24 +326,27 @@
                <a href="#">Contact</a>
               
         </div>
-        <div id="maximage">
-            <img class="bgmaximage" src="./back1.jpg" width="2000px" height="1333px" />
-            <img class="bgmaximage" src="./back2.jpg" width="2000px" height="1333px" />
-            <img class="bgmaximage" src="./back3.jpg" width="2000px" height="1333px" />
-        </div>
-      
-        <script>
-            $(function(){
-jQuery('.maximg').maxImage({
-isBackground: true,
-slideShow: true,
-slideShowTitle: true,
-slideDelay: 5,
-overflow: 'hidden',
-verticalAlign:'top'
+        <div class="full">
+            <div class="main01"></div>
+            <div class="main02"></div>
+            <div class="main03"></div>
+          </div>
+          <script>
+            $(document).on('ready', function() {
+  $(".full").slick({
+    arrows: false,
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    speed: 1500,
+    fade: true,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    pauseOnDotsHover: false,
+  });
 });
-});
-        </script>
+          </script>
+       
         
      
          
