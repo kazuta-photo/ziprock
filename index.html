@@ -287,10 +287,6 @@
                  <span class="pagetop__text">TOP</span>
              </a>
          </div>
-         <br>
-         <br>
-         <br>
-         <br>
          <div class="header1">
              <div class="header-logo"><img src="1745239922408~2.jpg"class="image1"></div>
              <div class="header-menu">
@@ -298,12 +294,12 @@
                <a href="#">About</a>
                <a href="#">Blog</a>
                <a href="#">Contact</a>
-               <ul id="header-images">
-                <li><img src="SDIM0636.JPG"></li>
-                <li><img src="SDIM0634.JPG"></li>
-                <li><img src="SDIM0637.JPG"></li>
-                <li><img src="SDIM0638.JPG"></li>
-            </ul>
+               <div class="full">
+                <div class="SDIM0636.JPG"></div>
+                <div class="SDIM0634.JPG"></div>
+                <div class="SDIM0637.JPG"></div>
+                <div class="SDIM0638.JPG"></div>
+              </div>
         </div>
      
          
@@ -314,61 +310,56 @@
             }
          </style> 
          <style>
-            header ul#header-images {
-	width: 10%;
-	height: 10%ß;
-	overflow: hidden;
-	position: relative;
-	list-style: none;
+            .full div {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
 }
-header ul#header-images li {
-	position: absolute;
+.full div.img01 {
+  background-image: url(https://125naroom.com/demo/img/simple01.jpg);
+}
+.full div.img02 {
+  background-image: url(https://125naroom.com/demo/img/simple02.jpg);
+}
+.full div.img03 {
+  background-image: url(https://125naroom.com/demo/img/simple03.jpg);
+}
+.full .slick-dots {
+  bottom: 4%;
+  z-index: +1;
+}
+
+/*=============
+base
+==============*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
 }
          </style>
          <script>
-            $(document).ready(function() {
-	$.fn.autoChanger = function() {
-		var timeout = 3000;
-		var speed = 1000;
-		var element = $(this).children();
-		var length = $(this).children().length;
-		var current = 0;
-		var next = 1;
-
-
-		$(element).hide();
-		$(element[0]).show();
-
-
-		var change = function(){
-			$(element[current]).fadeOut(speed);
-			$(element[next]).fadeIn(speed);
-
-
-			if ((next + 1) < element.length) {
-				current = next;
-				next++;
-				timeout = 3000;
-			} else {
-				current = element.length - 1;
-				next = 0;
-				timeout = 10000;
-			}
-
-
-			timer = setTimeout(function() { change(); }, timeout);
-		};
-
-
-		var timer = setTimeout(function() { change(); }, timeout);
-	}
-	$(function() {
-		$('#header-images').autoChanger();
-	});
+            $(document).on('ready', function() {
+  $(".full").slick({
+    arrows: false,
+    dots: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    speed: 1500,
+    fade: true,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    pauseOnDotsHover: false,
+  });
 });
-
-
          </script>
+        
+
+		
       
          
      </body>
