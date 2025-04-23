@@ -295,18 +295,19 @@
                <a href="#">Blog</a>
                <a href="#">Contact</a>
         </div>
-        </div>
-        </div>
-    </div>
-</div>
-</div>
-        <p id="slideshow">
-            <img src="SDIM0636.JPG" alt="画像1" class="active">
-            <img src="SDIM0634.JPG" alt="画像2">
-            <img src="SDIM0637.JPG" alt="画像3">
-            <img src="SDIM0638.JPG" alt="画像4">
-         </p>
+        <div class="slider-container">
+
+            <div class="image-container">
+              <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGZydWl0ZXN8ZW58MHx8MHx8fDA%3D" alt="one banana">
+              <img src="https://images.unsplash.com/photo-1528821128474-27f963b062bf?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGZydWl0ZXN8ZW58MHx8MHx8fDA%3D" alt="two cherries">
+              <img src="https://images.unsplash.com/photo-1457803097035-3ace37af34a7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEwfHxmcnVpdGVzfGVufDB8fDB8fHww" alt="three apples">
+              <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxmcnVpdGVzfGVufDB8fDB8fHww" alt="four slices of watermelon">
+            </div>
           
+            <!-- ナビゲーションコンテナ -->
+            <div class="nav-container"></div>
+          
+          </div>
          
          <style>
             img.image1{
@@ -314,50 +315,127 @@
                 
             }
          </style> 
-         <style type="text/css"> 
-            #slideshow {
-             position: relative;
-               width:  1980px; /* 画像の横幅に合わせて記述 */
-               height: 856px; /* 画像の高さに合わせて記述 */
-            
-            }
-            #slideshow img {
-               position: absolute;
-               top: 0;
-               left:0;
-               z-index: 8;
-               opacity: 0.0;
-            }
-            #slideshow img.active {
-               z-index: 10;
-               opacity: 1.0;
-            }
-            #slideshow img.last-active {
-               z-index: 9;
-            }
-            </style>
-            <script type="text/javascript">
-                function slideSwitch() {
-                   var $active = $('#slideshow img.active');
-                
-                   if ( $active.length == 0 ) $active = $('#slideshow img:last');
-                
-                   var $next =  $active.next().length ? $active.next()
-                      : $('#slideshow img:first');
-                
-                   $active.addClass('last-active');
-                
-                   $next.css({opacity: 0.0})
-                      .addClass('active')
-                      .animate({opacity: 1.0}, 1000, function() {
-                           $active.removeClass('active last-active');
-                      });
-                }
-                
-                $(function() {
-                   setInterval( "slideSwitch()", 3000 );
-                });
-                </script>
+         <style>
+            .slider-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  max-height: 500px;
+  border: 5px solid lightgray;
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+img.image-active {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.nav-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+
+.nav-btn {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  margin: 10px;
+  background-color: #0d7df5;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-btn.btn-active {
+  background-color: #f99f3e;
+}
+
+.nav-btn:hover {
+  box-shadow: 0 0 5px 3px white;
+}
+         </style>
+         <script>
+            const images = document.querySelectorAll("img");
+const navContainer = document.querySelector(".nav-container");
+const totalImages = images.length;
+let imageIndex = 0;
+let interval;
+
+for (let i = 0; i < totalImages; i++) {
+  const button = document.createElement("button");
+  button.classList.add("nav-btn");
+  navContainer.appendChild(button);
+}
+
+const buttons = document.querySelectorAll(".nav-btn");
+
+buttons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    imageIndex = index;
+    updateSlider();
+    resetInterval();
+  });
+});
+
+function updateSlider() {
+  images.forEach((image) => {
+    image.classList.remove("image-active");
+  });
+  buttons.forEach((button) => {
+    button.classList.remove("btn-active");
+  });
+  images[imageIndex].classList.add("image-active");
+  buttons[imageIndex].classList.add("btn-active");
+}
+
+function nextImage() {
+  imageIndex++;
+  if (imageIndex > totalImages - 1) {
+    imageIndex = 0;
+  }
+  updateSlider();
+}
+
+function autoPlay() {
+  interval = setInterval(nextImage, 3000);
+}
+
+function resetInterval() {
+  clearInterval(interval);
+  autoPlay();
+}
+
+updateSlider();
+autoPlay();
+         </script>
+      
          
      </body>
        </html>
