@@ -386,75 +386,120 @@
         }
       </style>
       <style>
-        .news-list{
-  list-style: none outside;
-  margin: 0;
-  padding: 0;
+        a {
+    text-decoration: none;
+    color: #333;
 }
-.news-list .item a{
-  display: flex;
-  flex-wrap: wrap;
-  flex-wrap: nowrap;
-  text-decoration: none;
-  color: #333;
-  border-bottom: 1px solid #CCC;
-  padding: 20px 20px;
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.news-list .item:first-child a{
-  border-top: 1px solid #CCC;
+
+
+.news {
+  padding: 50px 0;
+  background: #FFF7EA;
 }
-.news-list .item .date{
-  margin: 0;
-  min-width: 140px;
-  font-size: 16px;
-  color: #999;
-  padding: 0 20px 0 0;
+
+
+.inner {
+  width: 80%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 65px 0 100px;
 }
-.news-list .item .category{
-  margin: 0;
-  min-width: 140px;
-  padding: 0 20px 0 0;
-}
-.news-list .item .category span{
-  background: #999;
-  color: #FFF;
+
+
+.sub_ttl {
+  font-size: 30px;
   text-align: center;
-  display: inline-block;
-  padding: 5px 20px;
-  font-size: 12px;
-  line-height: 1;
-}
-.news-list .item .title{
-  margin: 0;
-  width: 100%;
-}
-.news-list .item a:hover .title{
-  color: #00F;
+  margin-bottom: 40px;
 }
 
-@media screen and (max-width: 767px){
-.news-list .item a{
-  flex-wrap: wrap;
-}
-.news-list .item .date{
-  min-width: 100px;
-}
-.news-list .item .title{
-  margin-top: 10px;
-}
+/* ここからがニュース記事のCSS */
+
+.news_list {
+  margin: 0 5%;
 }
 
-/* 装飾 */
- 
-*{
-  box-sizing: border-box;
+.news_list_item {
+  padding: 25px 0;
+  border-bottom: 1px solid #E6E6E6;
 }
-a{
-  text-decoration: none;
+
+.news_list_item:first-child {
+  border-top: 1px solid #E6E6E6;
 }
-body{
-  margin: 20px;
+.news_list_item a {
+ position: relative;
+ display: flex;
+ padding-right: 30px;
 }
+
+.news_list_date {
+  font-size: 15px;
+  display: flex;
+  margin-right: 15px;
+  align-items: center;
+}
+
+.news_item {
+  background: #b3b3b3;
+  border-radius: 14px;
+  width: 6em;
+  /* 親要素の文字サイズを基準 */
+  text-align: center;
+  margin-left: 20px;
+}
+
+.arrow {
+  width: 25px;
+  height: 1px;
+  background: #707070;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.arrow::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 1px;
+  background: #707070;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 0px;
+  bottom: 2px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .news_list_item a {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .news_list_item a  {
+        font-size: 14px;
+    }
+
+
+}
+@media screen and (max-width: 480px) {
+    .arrow {
+        display: none;
+    }
+    .news_list_item a {
+        padding-right: 0;
+    }
+}
+
+
+Resources
       </style>
 
    
@@ -493,29 +538,41 @@ body{
     <br>
     <br>
     <h2 class="heading04">NEWS</h2>
-    <ul class="news-list">
-    <li class="item">
-        <a href="#">
-            <p class="date">2020/4/15</p>
-            <p class="category"><span>お知らせ</span></p>
-            <p class="title">ここにお知らせが入りますここにお知らせが入りますここにお知らせが入ります</p>
-        </a>
-    </li>
-    <li class="item">
-        <a href="#">
-            <p class="date">2020/4/15</p>
-            <p class="category"><span>お知らせ</span></p>
-            <p class="title">ここにお知らせが入りますここにお知らせが入りますここにお知らせが入ります</p>
-        </a>
-    </li>
-    <li class="item">
-        <a href="#">
-            <p class="date">2020/4/15</p>
-            <p class="category"><span>お知らせ</span></p>
-            <p class="title">ここにお知らせが入りますここにお知らせが入りますここにお知らせが入ります</p>
-        </a>
-    </li>
-</ul>
+     <ul class="news_list">
+              <li class="news_list_item">
+                <a href="">
+                  <div class="news_list_date">
+                    <time>2020.05.12</time>
+                    <p class="news_item">お知らせ</p>
+                  </div>
+                  <p>サイトリニューアルしました。</p>
+                  <span class="arrow"></span>
+                </a>
+              </li>
+              <li class="news_list_item">
+                <a href="">
+                  <div class="news_list_date">
+                    <time>2020.05.12</time>
+                    <p class="news_item">お知らせ</p>
+                  </div>
+                  <p>記事が更新されました。記事が更新されました。記事が更新されました。記事が更新されました。</p>
+                  <span class="arrow"></span>
+                </a>
+              </li>
+              <li class="news_list_item">
+                <a href="">
+                  <div class="news_list_date">
+                    <time>2020.05.12</time>
+                    <p class="news_item">お知らせ</p>
+                  </div>
+                  <p>サイトリニューアルしました。</p>
+                  <span class="arrow"></span>
+                </a>
+              </li>
+        </ul>
+    
+    
+        </div>
          <style>
             img.image1{
                 width: 350px;
