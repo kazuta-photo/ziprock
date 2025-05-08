@@ -1,1 +1,576 @@
+<!DOCTYPE html>
+<html lang_"ja">
+    <head>
+        <meta charset="UTF-8">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <title>zipRock official site</title>
+        <style>
+   p{
+    font-size:1.4vw;
+   }
+   h2{
+    font-size:3.2vw;
+   }
+        </style>
 
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+     
+            body {
+                margin: 0;
+            }
+      
+            .sec-blue {
+                background-color: rgb(0, 140, 255, .5);
+                height: 800px;
+            }
+     
+            .sec-yellow {
+                background-color: rgba(244, 244, 11);
+                height: 800px;
+            }
+     
+            .sec-green {
+                background-color: rgb(129, 243, 129, .5);
+                height: 800px;
+            }
+     
+            /* トップへ戻るボタン */
+            .pagetop {
+                width: 64px;
+                height: 64px;
+                position: fixed;
+                bottom: 8%;
+                right: 2%;
+                transition: all .3s;
+            }
+     
+            .pagetop__link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: #ffffff;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 18px;
+                font-size: bold;
+                line-height: 1.3;
+                color: #333;
+                text-decoration: none;
+            }
+     
+            .pagetop__text {
+                padding-top: 15px;
+                position: relative;
+            }
+     
+                .pagetop__text::before {
+                    content: "〈";
+                    display: inline-block;
+                    position: absolute;
+                    top: -13px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(90deg);
+                }
+     
+                .pagetop__text::after {
+                    content: "〈";
+                    display: inline-block;
+                    position: absolute;
+                    top: -7px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(90deg);
+                }
+     
+            /* TOPボタン出現後のスタイル */
+            .pagetop.fadeIn {
+                opacity: 1;
+                visibility: inherit;
+            }
+        </style>
+         <script>
+             'use strict';
+     
+             {
+                 // データ取得
+                 // DOM取得
+                 // pagetopボタン
+                 const pageTop = document.querySelector('.pagetop');
+                 // トップへ戻るボタンを表示する位置のsection
+                 const secGreen = document.querySelector('.sec-green');
+                 // ビューポートの高さ
+                 const vh = window.innerHeight;
+                 // リセット用変数
+                 let time = null;
+                 // タイマーの秒数
+                 const speed = 200;
+     
+                 // 処理
+                 // イベントで実行する処理
+                 function pageTopAction() {
+                     // スクロールイベントを間引く
+                     clearTimeout(time);
+                     time = setTimeout(function () {
+     
+                         // スクロール量
+                         const scroll = window.pageYOffset;
+                         console.log(scroll);  /* console.logを追加 */
+     
+                         // 要素の位置までの数値
+                         const targetDistance = secGreen.getBoundingClientRect().top;
+                         console.log(targetDistance);  /* console.logを追加 */
+     
+                         // 要素までの絶対位置
+                         const targetPosition = scroll + targetDistance - vh;
+     
+                         // スクロール量がtargetPositionの位置を超えたら
+                         if (targetPosition < scroll) {
+                             pageTop.classList.add('fadeIn');
+                         } else {
+                             pageTop.classList.remove('fadeIn');
+                         }
+     
+                     }, speed); /* setTimeoutを閉じる */
+                 }
+     
+                 // イベント付加
+                 window.addEventListener('scroll', pageTopAction);
+             }
+         </script>
+         <style>
+            .fix-01 {
+                 background: rgba(255, 255, 255, 0.8);
+                 /背景を白色に/ box-shadow:0 2px 8px rgba(30,30,80,.3);
+                 /影。不要なら削除/ left:0;
+                 line-height: 1;
+                 position: fixed;
+                 top: 0;
+                 width: 100%;
+                 z-index: 100;
+                 text-align: center;
+                 padding: 1rem;
+             }
+         </style>
+         <style>
+             body{
+                 background-color:#0c0c0c
+             }
+         </style>
+         
+         <style>
+             h1 {
+                 font-weight:100
+             }
+         </style>
+         <style>
+             body {
+                 margin: 0;
+             }
+         </style>
+         <style>
+             h1 {
+                 font-size: 60px;
+                 font-family: 游ゴシック;
+                 color: white;
+                 
+             }
+         </style>
+         <style>
+             p {
+                 color:white;
+                 
+             }
+         </style>
+         <style>
+             a {
+                 text-align: center;
+             }
+         </style>
+         <style>
+             div.instagram {
+                 text-align: center;
+             }
+         </style>
+         <style>
+             div.photohito {
+                 text-align: center;
+             }
+         </style>
+         <style>
+             .button019 a {
+                 background: #eee;
+                 border-radius: 3px;
+                 position: relative;
+                 display: flex;
+                 justify-content: space-around;
+                 align-items: center;
+                 margin: 0 auto;
+                 max-width: 280px;
+                 padding: 10px 25px;
+                 color: #313131;
+                 transition: 0.3s ease-in-out;
+                 font-weight: 500;
+             }
+     
+                 .button019 a:after {
+                     content: "";
+                     position: absolute;
+                     top: 50%;
+                     bottom: 0;
+                     right: 2rem;
+                     font-size: 90%;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     transition: right 0.3s;
+                     width: 6px;
+                     height: 6px;
+                     border-top: solid 2px currentColor;
+                     border-right: solid 2px currentColor;
+                     transform: translateY(-50%) rotate(45deg);
+                 }
+     
+                 .button019 a:hover {
+                     background: #6bb6ff;
+                     color: #FFF;
+                 }
+     
+                     .button019 a:hover:after {
+                         right: 1.4rem;
+                     }
+         </style>
+         <style>
+             .fix-01 {
+                 font-family: 游ゴシック;
+             }
+         </style>
+         <style>
+             /** 1. 一般的なヘッダー */
+     .header1 {
+      /* divを横並びにして、.header-logoと.header-menuを等間隔に左右に配置*/
+      display: flex;
+      justify-content: space-between;
+     
+      background: #ffffff;
+      padding: 20px;
+      color: #707070;
+     }
+     
+     .header1 .header-menu a {
+      text-decoration: none;
+      color: #707070;
+      padding: 20px;
+     }
+     .header1 .header-menu a:hover {
+      border-bottom: 2px solid #ffffff;
+      padding-bottom: 10px;
+     }
+     .header1 .header-menu a:hover,
+     .header1 .header-menu a.active {
+      border-bottom: 2px solid #707070;
+      padding-bottom: 10px;
+     }
+     .header-logo {
+         font-size: 80px;
+     }
+     .header-menu {
+         font-size: 20px;
+     }
+     .img2 img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+     }
+         </style>
+  <style type="text/css">
+    * {
+    margin: 0;
+    padding: 0;
+    }
+    .maximg {
+    display:none;
+    }
+    </style>
+    <style>
+        .swiper {
+          width: 6000px;
+          height: 3000px;
+        }
+      </style>
+      <script>
+        const swiper = new Swiper('.swiper', {
+          // パラメータの指定
+          loop: true,
+      
+          // ページネーション
+          pagination: {
+            el: '.swiper-pagination',
+          },
+      
+          // 左右のボタン
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      </script>
+      <style>
+        .heading03 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3.2vw;
+	text-align: center;
+    color:white;
+}
+
+.heading03::before,
+.heading03::after {
+	content: '';
+	width: 70px;
+	height: 3px;
+	background-color: #ffffff;
+}
+
+.heading03::before {
+	margin-right: 20px;
+}
+.heading03::after {
+	margin-left: 20px;
+}
+      </style>
+      <style>
+               .heading04 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3.2vw;
+	text-align: center;
+    color:rgb(0, 0, 0);
+}
+
+.heading04::before,
+.heading04::after {
+	content: '';
+	width: 70px;
+	height: 3px;
+	background-color: #000000;
+}
+
+.heading04::before {
+	margin-right: 20px;
+}
+.heading04::after {
+	margin-left: 20px;
+}
+      </style>
+      <style>
+        p{
+            color:white;
+            
+        }
+      </style>
+      <style>
+        p{
+            line-height:3;
+        }
+      </style>
+      <style>
+        a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.news {
+  padding: 50px 0;
+  background: #FFF7EA;
+}
+
+
+.inner {
+  width: 80%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 65px 0 100px;
+}
+
+
+.sub_ttl {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ここからがニュース記事のCSS */
+
+.news_list {
+  margin: 0 5%;
+}
+
+.news_list_item {
+  padding: 25px 0;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.news_list_item:first-child {
+  border-top: 1px solid #E6E6E6;
+}
+.news_list_item a {
+ position: relative;
+ display: flex;
+ padding-right: 30px;
+}
+
+.news_list_date {
+  font-size: 20px;
+  display: flex;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.news_item {
+  background: #b3b3b3;
+  border-radius: 14px;
+  width: 6em;
+  /* 親要素の文字サイズを基準 */
+  text-align: center;
+  margin-left: 20px;
+}
+
+.arrow {
+  width: 25px;
+  height: 1px;
+  background: #b4b4b4;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.arrow::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 1px;
+  background: #b4b4b4;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 0px;
+  bottom: 2px;
+}
+
+.news_main {
+    color:#0c0c0c
+}
+
+
+@media screen and (max-width: 1024px) {
+    .news_list_item a {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .news_list_item a  {
+        font-size: 14px;
+    }
+
+
+}
+@media screen and (max-width: 480px) {
+    .arrow {
+        display: none;
+    }
+    .news_list_item a {
+        padding-right: 0;
+    }
+}
+
+
+      </style>
+      <style>
+        .box {
+background:#ffffff; /*背景色の指定*/
+}
+      </style>
+      <style>
+        .blog-main{
+            margin: 0 auto;
+        }
+      </style>
+      <style>
+        h3{
+            color:#b3b3b3
+        }
+      </style>
+
+<meta name="google-site-verification" content="VitOwX3pL_7DvscATsS3hldQ8FIiQiRCfo2P4JQw9w0" />
+     </head>
+     <body>
+         <div class="pagetop">
+             <a href="index.html" class="pagetop__link">
+                 <span class="pagetop__text">TOP</span>
+             </a>
+         </div>
+         <div class="header1">
+             <div class="header-logo"><img src="1745239922408~2.jpg"class="image1"></div>
+             <div class="header-menu">
+               <a href="index.html" >TOP</a>
+               <a href="about.html">About</a>
+               <a href="blog.html" class="active">Blog/News</a>
+               <a href="#">Contact</a>
+              
+        </div>
+        </div>
+    
+    <br>
+    <br>
+   <div style="width:50vw" class="blog-main">
+    <h3>2025.5.5 blog</h3>
+    <h1>練習中の曲について</h1>
+    <br>
+    <p>
+        今練習している曲はRADWIMPSの前前前世です。この曲のそれぞれの楽器について紹介したいと思います。
+        <br>
+        リードギター：単音引きがメイン。すぐにピッキングミスするので気を抜くことができない。
+        <br>
+        バッキングギター：コードの響きが非常に綺麗。ストロークのパターンが難しい。
+        <br>
+        ベース：テンポが早いため（190bpm）指が疲れる。二番のAメロが見せ場。
+        <br>
+        ドラム：テンポが早いため非常に難しい。
+        <br>
+        キーボード：もともとこの曲にはキーボードが用意されていないので、キーボードパートを自分で考えた。
+
+    </p>
+   </div>         
+   <style>
+            img.image1{
+                width: 350px;
+                
+            }
+            .img2 img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+         </style> 
+       
+
+		
+      
+         
+     </body>
+       </html>
+</html>
