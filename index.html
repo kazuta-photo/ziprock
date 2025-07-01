@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -226,6 +225,23 @@
             content: "▲";
             font-size: 1.2rem;
         }
+        
+        /* ★★★ 追加・修正部分 ★★★ */
+        /* ==============
+         * フッター
+         * ============== */
+        .site-footer {
+            padding: 40px 20px;
+            border-top: 1px solid #2a2a2a; /* コンテンツとの区切り線 */
+            margin-top: 40px; /* mainコンテンツとの余白 */
+        }
+        .copyright {
+            color: #888; /* 少し薄い色で控えめに */
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        /* ★★★ 追加・修正部分ここまで ★★★ */
+
 
         /* ==============
          * レスポンシブ対応 (画面幅が768px以下の場合)
@@ -280,105 +296,3 @@
             .news_list_date {
                 margin-bottom: 8px;
             }
-            
-            .news_item_category {
-                margin-left: 0;
-            }
-
-            .news_item_title {
-                margin-top: 8px;
-            }
-
-            .arrow {
-                right: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <header class="header1">
-        <div class="header-logo">
-            <a href="#"><img src="1745239922408~2.jpg" alt="zipRock Logo"></a>
-        </div>
-        <nav class="header-menu">
-            <a href="#" class="active">TOP</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog/News</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-
-    <main>
-        <div class="main-visual">
-            <img src="SDIM0636.JPG" alt="バンドのメインイメージ">
-        </div>
-
-        <section class="content-section">
-            <h2 class="heading">zipRockとは</h2>
-            <p>
-                高1男子による6人組のバンド。2024年11月頃に結成。<br>
-                2025年の文化祭での発表を目指している。<br>
-                主に定番の邦ロックを演奏する予定。<br>
-                詳しくはページ先頭のaboutをクリック
-            </p>
-        </section>
-
-        <section class="content-section">
-            <h2 class="heading">NEWS</h2>
-            <ul class="news_list">
-                <li class="news_list_item">
-                    <a href="#">
-                        <div class="news_list_date">
-                            <time>2025.05.05</time>
-                            <span class="news_item_category">news</span>
-                        </div>
-                        <p class="news_item_title">2025文化祭ライブに参加表明、しかし...!?</p>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="news_list_item">
-                    <a href="#">
-                        <div class="news_list_date">
-                            <time>2025.05.05</time>
-                            <span class="news_item_category">blog</span>
-                        </div>
-                        <p class="news_item_title">練習中の曲について</p>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="news_list_item">
-                    <a href="#">
-                        <div class="news_list_date">
-                            <time>2025.05.05</time>
-                            <span class="news_item_category">news</span>
-                        </div>
-                        <p class="news_item_title">zipRock公式サイト開設</p>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <div class="pagetop">
-        <a href="#" class="pagetop__link">
-            <span class="pagetop__text"></span>
-        </a>
-    </div>
-
-    <script>
-        'use strict';
-        const pageTop = document.querySelector('.pagetop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 400) { // 400pxスクロールしたら表示
-                pageTop.classList.add('fadeIn');
-            } else {
-                pageTop.classList.remove('fadeIn');
-            }
-        });
-    </script>
-
-</body>
-</html>
-```
