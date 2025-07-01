@@ -3,296 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zipRock official site</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-
+    <title>バンド名 - オフィシャルウェブサイト</title>
     <style>
-        /* ==============
-         * 基本設定 & リセット
-         * ============== */
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* --- 全体の設定 --- */
         body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, sans-serif;
             margin: 0;
-            background-color: #0c0c0c;
-            color: #ffffff;
-            font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
-            text-align: center;
-            line-height: 1.8;
+            background-color: #121212; /* ダーク系の背景色 */
+            color: #ffffff; /* 白色のテキスト */
+            font-size: 17px; /* PCでの基本フォントサイズを少し大きく */
+            line-height: 1.7;
         }
 
         a {
+            color: #1e90ff; /* リンクの色 */
             text-decoration: none;
-            color: inherit; /* 基本的に親要素の色を継承 */
+            transition: opacity 0.3s;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        a:hover {
+            opacity: 0.8;
+            text-decoration: none;
         }
 
         img {
             max-width: 100%;
             height: auto;
-            vertical-align: middle;
         }
 
-        /* ==============
-         * ヘッダー
-         * ============== */
-        .header1 {
+        .container {
+            max-width: 980px; /* コンテンツ幅を少し広げる */
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background-color: rgba(28, 28, 28, 0.9);
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px); /* すりガラス効果 */
+        }
+
+        .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #ffffff;
-            padding: 10px 40px;
-            color: #707070;
         }
 
-        .header1 .header-logo img {
-            width: 280px;
+        .logo a {
+            font-size: 32px; /* ロゴのフォントサイズを大きく */
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
         }
 
-        .header1 .header-menu {
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
             display: flex;
-            font-size: 1rem;
         }
 
-        .header1 .header-menu a {
-            padding: 10px 15px;
-            transition: border-bottom 0.3s;
+        nav li a {
+            display: block;
+            padding: 10px 20px; /* メニューの余白を調整 */
+            color: #ffffff;
+            font-size: 18px; /* メニューのフォントサイズを大きく */
+            font-weight: 500;
         }
 
-        .header1 .header-menu a:hover,
-        .header1 .header-menu a.active {
-            border-bottom: 2px solid #707070;
-        }
-
-        /* ==============
-         * メインコンテンツ
-         * ============== */
-        .main-visual img {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-        }
-
-        .content-section {
-            padding: 60px 20px;
-        }
-
-        .heading {
+        /* --- メインビジュアル --- */
+        .hero {
+            background-image: url('https://via.placeholder.com/1200x600?text=BAND+PHOTO'); /* バンドの写真をここに設定 */
+            background-size: cover;
+            background-position: center;
+            height: 70vh; /* 高さを調整 */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2.5rem;
             text-align: center;
-            color: white;
-            margin-bottom: 30px;
+            color: #fff;
         }
 
-        .heading::before,
-        .heading::after {
-            content: '';
-            width: 70px;
-            height: 3px;
-            background-color: #ffffff;
+        .hero-text h1 {
+            font-size: 52px; /* キャッチコピーのフォントサイズを大きく */
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
         }
 
-        .heading::before {
-            margin-right: 20px;
+        /* --- 各セクション --- */
+        .section {
+            padding: 80px 0; /* セクションの余白を調整 */
+            border-bottom: 1px solid #333;
         }
 
-        .heading::after {
-            margin-left: 20px;
-        }
-        
-        .content-section p {
-            font-size: 1rem;
-            line-height: 2; /* line-heightは単位なしが推奨 */
+        .section-title {
+            font-size: 36px; /* セクションタイトルのフォントサイズを大きく */
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
         }
 
-        /* ==============
-         * ニュースセクション
-         * ============== */
-        .news_list {
-            max-width: 800px;
-            margin: 0 auto;
+        /* ニュース */
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+        .news-list li {
+            padding: 20px 0;
+            border-bottom: 1px dotted #444;
+            display: flex;
+            align-items: baseline;
+        }
+        .news-list li:first-child{
+            border-top: 1px dotted #444;
+        }
+
+        .news-list time {
+            margin-right: 25px;
+            font-weight: bold;
+            color: #aaa;
+            flex-shrink: 0; /* 日付が縮まないように */
+        }
+
+        /* ライブ */
+        .live-table {
+            width: 100%;
+            border-collapse: collapse;
             text-align: left;
         }
 
-        .news_list_item {
+        .live-table th, .live-table td {
             border-bottom: 1px solid #444;
-        }
-        .news_list_item:first-child {
-            border-top: 1px solid #444;
+            padding: 20px 15px;
         }
 
-        .news_list_item a {
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding: 20px 30px 20px 10px;
-            color: #ffffff;
-            transition: background-color 0.3s;
-        }
-        .news_list_item a:hover {
-            background-color: #222;
+        .live-table th {
+            background-color: #2a2a2a;
+            font-size: 18px;
         }
 
-        .news_list_date {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-            font-size: 1rem;
-        }
-
-        .news_item_category {
-            background: #555;
-            color: #fff;
-            border-radius: 4px;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            margin-left: 15px;
-            flex-shrink: 0; /* 縮まないように設定 */
-        }
-
-        .news_item_title {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .arrow {
-            width: 25px;
-            height: 1px;
-            background: #b4b4b4;
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-        }
-
-        .arrow::after {
-            content: "";
-            display: block;
-            width: 8px;
-            height: 8px;
-            border-top: 1px solid #b4b4b4;
-            border-right: 1px solid #b4b4b4;
-            transform: rotate(45deg);
-            position: absolute;
-            right: 0px;
-            top: -4px;
-        }
-
-        /* ==============
-         * トップへ戻るボタン
-         * ============== */
-        .pagetop {
-            width: 60px;
-            height: 60px;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all .3s;
-        }
-
-        .pagetop.fadeIn {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .pagetop__link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .pagetop__text::before {
-            content: "▲";
-            font-size: 1.2rem;
+        /* ディスコグラフィー */
+        .disco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* カードの最小幅を調整 */
+            gap: 40px;
         }
         
-        /* ★★★ 追加・修正部分 ★★★ */
-        /* ==============
-         * フッター
-         * ============== */
-        .site-footer {
-            padding: 40px 20px;
-            border-top: 1px solid #2a2a2a; /* コンテンツとの区切り線 */
-            margin-top: 40px; /* mainコンテンツとの余白 */
+        .disco-item {
+            text-align: center;
         }
-        .copyright {
-            color: #888; /* 少し薄い色で控えめに */
-            font-size: 0.9rem;
-            margin: 0;
+        .disco-item img {
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        /* ★★★ 追加・修正部分ここまで ★★★ */
 
+        .disco-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 22px; /* 作品名のフォントサイズを大きく */
+        }
 
-        /* ==============
-         * レスポンシブ対応 (画面幅が768px以下の場合)
-         * ============== */
-        @media screen and (max-width: 768px) {
+        /* --- フッター --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 15px;
+            color: #888;
+        }
+
+        /* =================================
+         * スマートフォン対応 (画面幅が768px以下の場合)
+         * ================================= */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px; /* スマホでの基本フォントサイズ */
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
             /* --- ヘッダー --- */
-            .header1 {
-                flex-direction: column; /* 縦並びに */
-                padding: 15px;
+            .header-inner {
+                flex-direction: column; /* ロゴとナビを縦並びに */
+                gap: 20px; /* 縦並びになった要素の間隔 */
             }
 
-            .header1 .header-logo {
-                margin-bottom: 15px;
-            }
-
-            .header1 .header-logo img {
-                width: 220px;
-            }
-
-            .header1 .header-menu {
-                font-size: 0.9rem;
-                flex-wrap: wrap;
+            nav ul {
                 justify-content: center;
+                flex-wrap: wrap; /* メニューを折り返す */
             }
-            .header1 .header-menu a {
-                padding: 8px 10px;
-            }
-            
-            /* --- メインビジュアル --- */
-            .main-visual img {
-                height: 350px; /* スマホでは高さを抑える */
-            }
-            
-            /* --- 見出し --- */
-            .heading {
-                font-size: 1.8rem;
+            nav li a {
+                padding: 8px 12px;
+                font-size: 16px;
             }
 
-            .heading::before,
-            .heading::after {
-                width: 40px; /* 線の長さを短く */
-                height: 2px;
+            /* --- メインビジュアル --- */
+            .hero-text h1 {
+                font-size: 36px; /* スマホ用にタイトルを小さく */
+            }
+
+            /* --- セクション --- */
+            .section {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 28px;
             }
 
             /* --- ニュース --- */
-            .news_list_item a {
+            .news-list li {
                 flex-direction: column; /* 縦並びに */
                 align-items: flex-start;
-                padding-right: 10px;
+                gap: 5px;
             }
-            
-            .news_list_date {
-                margin-bottom: 8px;
+
+            /* --- ライブテーブル --- */
+            .live-table thead {
+                display: none; /* PC用の見出し行を非表示に */
             }
+            .live-table tr, .live-table td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .live-table tr {
+                margin-bottom: 20px;
+                border: 1px solid #444;
+                border-radius: 4px;
+            }
+            .live-table td {
+                border: none;
+                border-bottom: 1px dotted #444;
+                padding-left: 100px; /* ラベル用のスペースを確保 */
+                position: relative;
+                text-align: left;
+            }
+            .live-table td:last-child {
+                border-bottom: none;
+            }
+            .live-table td::before {
+                content: attr(data-label); /* data-label属性の内容を表示 */
+                position: absolute;
+                left: 15px;
+                width: 80px;
+                font-weight: bold;
+                color: #aaa;
+            }
+
+            /* --- ディスコグラフィー --- */
+            .disco-grid {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="#">YOUR BAND NAME</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#news">NEWS</a></li>
+                    <li><a href="#live">LIVE</a></li>
+                    <li><a href="#discography">DISCOGRAPHY</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>新しい音楽の夜明け</h1>
+            </div>
+        </section>
+        
+        <div class="container">
+            <section id="news" class="section">
+                <h2 class="section-title">NEWS</h2>
+                <ul class="news-list">
+                    <li><time>2025.07.01</time><span>1st Album "ECHOES" リリース決定！</span></li>
+                    <li><time>2025.06.15</time><span>夏フェス出演決定のお知らせ</span></li>
+                    <li><time>2025.05.30</time><span>オフィシャルグッズのオンライン販売を開始しました。</span></li>
+                </ul>
+            </section>
+
+            <section id="live" class="section">
+                <h2 class="section-title">LIVE</h2>
+                <table class="live-table">
+                    <thead>
+                        <tr>
+                            <th>日付</th>
+                            <th>イベント名</th>
+                            <th>会場</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="日付">2025.08.10</td>
+                            <td data-label="イベント">SUMMER ROCK FES</td>
+                            <td data-label="会場">海浜幕張公園</td>
+                        </tr>
+                        <tr>
+                            <td data-label="日付">2025.09.20</td>
+                            <td data-label="イベント">"ECHOES" Release Tour</td>
+                            <td data-label="会場">渋谷ライブハウス XYZ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="discography" class="section">
+                <h2 class="section-title">DISCOGRAPHY</h2>
+                <div class="disco-grid">
+                    <div class="disco-item">
+                        <img src="https://via.placeholder.com/300x300?text=ALBUM+JACKET" alt="アルバムジャケット">
+                        <h3>1st Album "ECHOES"</h3>
+                        <p>2025.07.01 Release</p>
+                    </div>
+                    <div class="disco-item">
+                        <img src="https://via.placeholder.com/300x300?text=SINGLE+JACKET" alt="シングルジャケット">
+                        <h3>1st Single "Starlight"</h3>
+                        <p>2024.12.10 Release</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 YOUR BAND NAME. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
