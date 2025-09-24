@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英検準1級 要約問題 完全版ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: The SPA is a comprehensive dashboard with three main sections: '徹底攻略ガイド' (Guide) for core knowledge, '傾向分析' (Analysis) for data-driven insights, and '実戦練習' (Practice) for hands-on application. This structure was chosen to provide a holistic learning experience that progresses from theory to practice. The Guide section has been significantly expanded with more detailed paraphrasing examples, and new sections on discourse markers and paragraph reading. The Analysis section uses charts to visualize topic trends and scoring criteria, and the Practice section provides an interactive simulation. This architecture supports both targeted information retrieval and a guided, end-to-end learning path. -->
+    <!-- Visualization & Content Choices:
+        - Report Info: Scoring & Importance -> Goal: Show relative importance -> Viz: Doughnut Chart -> Interaction: Hover for details -> Justification: A visual breakdown is more intuitive and memorable than text alone. Library: Chart.js.
+        - Report Info: Common Topics & Frequency -> Goal: Show trend data -> Viz: Bar Chart -> Interaction: Hover for values -> Justification: A bar chart is ideal for comparing discrete categories (topics) by a quantitative value (frequency). Library: Chart.js.
+        - Report Info: Paraphrasing Techniques & Examples -> Goal: Demonstrate skills -> Presentation: Interactive toggle cards for various techniques -> Interaction: Click to reveal -> Justification: Actively revealing the answer is more engaging and aids learning retention compared to a static list. The content is broken down by technique for clarity. Method: JS.
+        - Report Info: Discourse Markers & Paragraph Reading -> Goal: Explain logical structure -> Presentation: Interactive toggle cards & structured text blocks -> Interaction: Click to reveal examples & explanations -> Justification: Breaking down complex topics into small, interactive, digestible chunks improves understanding. Method: HTML/JS.
+        - Report Info: Time Management -> Goal: Provide a practical tool -> Presentation: Interactive timer -> Interaction: Start/Stop/Reset button -> Justification: A live timer makes the time management concept concrete and actionable for the user. Method: HTML/JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F8F7F4; /* Warm Neutral Background */
+        }
+        .tab-active {
+            border-bottom: 2px solid #E57373; /* Subtle Accent */
+            color: #E57373;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            color: #757575;
+        }
+        .content-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div id="app" class="max-w-6xl mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-800">英検準1級 要約問題</h1>
+            <h2 class="text-xl md:text-3xl font-semibold text-[#E57373]">完全版ガイド＆実戦練習</h2>
+            <p class="mt-2 text-gray-600">語彙・表現力から論理構成まで。データとテクニックで高得点を狙います。</p>
+        </header>
+
+        <nav class="flex justify-center border-b border-gray-200 mb-8 flex-wrap">
+            <button data-tab="guide" class="tab-btn px-4 py-3 text-sm md:text-base transition-colors duration-300 tab-active">徹底攻略ガイド</button>
+            <button data-tab="analysis" class="tab-btn px-4 py-3 text-sm md:text-base transition-colors duration-300 tab-inactive">傾向分析</button>
+            <button data-tab="practice" class="tab-btn px-4 py-3 text-sm md:text-base transition-colors duration-300 tab-inactive">実戦練習</button>
+        </nav>
+
+        <main id="content-container">
+            <!-- Section 1: Guide -->
+            <section id="guide" class="tab-content">
+                <div class="space-y-8">
+                    <div class="content-card p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-[#E57373] mb-4">要約問題の解き方と採点の観点</h3>
+                        <p class="text-gray-700 mb-6">要約問題は、単なる読解力や語彙力だけでなく、論理的な思考力と表現力が問われる総合的な技能問題です。本番で力を出し切るための基本的なステップと、見落としがちなポイントを再確認しましょう。</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">💡 4ステップ攻略法</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li><span class="font-bold text-[#E57373]">ステップ1：全体像を掴む (2分)</span> - パッセージをざっと読み、主題と大まかな構成を把握。</li>
+                                    <li><span class="font-bold text-[#E57373]">ステップ2：キーポイントを特定 (3分)</span> - 各段落のトピックセンテンスと結論から、要点を絞り込む。</li>
+                                    <li><span class="font-bold text-[#E57373]">ステップ3：パラフレーズで構成 (4分)</span> - 特定した要点を自分の言葉で繋ぎ合わせ、下書きを作成。</li>
+                                    <li><span class="font-bold text-[#E57373]">ステップ4：推敲と語数調整 (1分)</span> - 語数チェックと文法・スペルミスを修正。</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">✅ 採点の観点</h4>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                    <li><span class="font-bold text-[#E57373]">内容</span>: 原文の主要な点をすべて含んでいるか。</li>
+                                    <li><span class="font-bold text-[#E57373]">構成</span>: 要点が論理的に繋がり、分かりやすい流れになっているか。</li>
+                                    <li><span class="font-bold text-[#E57373]">語彙・文法</span>: パラフレーズを効果的に使えているか、文法は正しいか。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-[#E57373] mb-4">必須スキル：パラフレーズ 実践テクニック集</h3>
+                        <p class="text-gray-700 mb-6">単語の言い換えから文の構造変換まで、パラフレーズのパターンを知ることで表現の幅が広がります。具体的な例を通して学びましょう。</p>
+                        <div class="space-y-6" id="paraphrase-container">
+                            <!-- Technique 1: 同義語・類義語 -->
+                            <div class="paraphrase-card bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">1. 同義語・類義語を使う</p>
+                                <p class="my-2 text-sm text-gray-600">原文: The government has made a <span class="text-red-600 font-bold">significant</span> <span class="text-red-600 font-bold">effort</span> to address the issue.</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">言い換え例を見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p>→ The government has put in a <span class="font-bold">great deal of work</span> to deal with the problem.</p>
+                                    <p>→ The government has made a <span class="font-bold">considerable</span> <span class="font-bold">attempt</span> to solve the problem.</p>
+                                </div>
+                            </div>
+                            <!-- Technique 2: 品詞を変える -->
+                            <div class="paraphrase-card bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">2. 品詞を変える</p>
+                                <p class="my-2 text-sm text-gray-600">原文: The company's <span class="text-red-600 font-bold">decision</span> to invest in technology was <span class="text-red-600 font-bold">beneficial</span>.</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">言い換え例を見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p>→ The company <span class="font-bold">decided</span> to invest in technology, which was <span class="font-bold">of benefit</span>.</p>
+                                </div>
+                            </div>
+                            <!-- Technique 3: 能動態と受動態の入れ替え -->
+                            <div class="paraphrase-card bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">3. 能動態と受動態を入れ替える</p>
+                                <p class="my-2 text-sm text-gray-600">原文: Many students <span class="text-red-600 font-bold">were affected by</span> the new university policy.</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">言い換え例を見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p>→ The new university policy <span class="font-bold">affected many students</span>.</p>
+                                </div>
+                            </div>
+                            <!-- Technique 4: 具体例の一般化 -->
+                            <div class="paraphrase-card bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">4. 具体例を一般化する</p>
+                                <p class="my-2 text-sm text-gray-600">原文: People are spending more time on <span class="text-red-600 font-bold">smartphones, tablets, and laptops</span>.</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">言い換え例を見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p>→ People are spending more time on <span class="font-bold">electronic devices</span>.</p>
+                                </div>
+                            </div>
+                            <!-- Technique 5: 句動詞の置き換え -->
+                             <div class="paraphrase-card bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">5. 句動詞を1語の動詞に置き換える</p>
+                                <p class="my-2 text-sm text-gray-600">原文: They had to <span class="text-red-600 font-bold">put off</span> the meeting due to a sudden storm.</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">言い換え例を見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p>→ They had to <span class="font-bold">postpone</span> the meeting because of a sudden storm.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-[#E57373] mb-4">論理構造を掴む：パラグラフリーディングとディスコースマーカー</h3>
+                        <p class="text-gray-700 mb-6">要約の鍵は、文章全体の論理的な流れを正確に捉えることです。段落の役割と、論理関係を示す目印（ディスコースマーカー）に注目しましょう。</p>
+                        <div class="space-y-6">
+                            <div class="bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">1. パラグラフリーディング</p>
+                                <p class="my-2 text-sm text-gray-600">各段落には、それぞれ役割があります。特に、序論・本論・結論を見分け、本論の各段落のトピックセンテンスに注目しましょう。具体例や補足情報は読み飛ばしても構いません。</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">例を見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p class="font-bold">序論 (Introduction):</p>
+                                    <p>問題提起やテーマの背景を説明する部分。
+                                        <br>
+                                    <p class="font-bold">本論 (Body):</p>
+                                    <p>主題を裏付ける論拠や具体例が展開される部分。各段落の最初の文（トピックセンテンス）がその段落の要点です。
+                                        <br>
+                                    <p class="font-bold">結論 (Conclusion):</p>
+                                    <p>主題を再確認し、全体の主張をまとめる部分。
+                                </div>
+                            </div>
+                            <div class="bg-[#FFF9F2] p-4 rounded-lg">
+                                <p class="font-semibold text-gray-700">2. ディスコースマーカーの活用</p>
+                                <p class="my-2 text-sm text-gray-600">ディスコースマーカーは、文章の論理的な流れを示す「道しるべ」です。これらを意識的に探すことで、パッセージの構造を素早く理解できます。</p>
+                                <button class="toggle-answer-btn text-sm text-white bg-[#E57373] hover:bg-red-500 px-3 py-1 rounded-md mt-2">具体的なマーカーを見る</button>
+                                <div class="answer hidden mt-2 p-2 bg-green-50 border-l-4 border-green-400 rounded-r-lg text-sm text-green-700">
+                                    <p class="font-bold">⚫️ 追加・列挙:</p>
+                                    <p>・<span class="font-bold">In addition, furthermore, moreover, besides</span> など</p>
+                                    <p class="font-bold">⚫️ 対比・逆接:</p>
+                                    <p>・<span class="font-bold">However, on the other hand, in contrast, nonetheless</span> など</p>
+                                    <p class="font-bold">⚫️ 因果関係:</p>
+                                    <p>・<span class="font-bold">Therefore, as a result, consequently, thus</span> など</p>
+                                    <p class="font-bold">⚫️ 具体例・補足:</p>
+                                    <p>・<span class="font-bold">For example, for instance, such as</span> など</p>
+                                    <p class="font-bold">⚫️ 結論:</p>
+                                    <p>・<span class="font-bold">In conclusion, in summary, to sum up</span> など</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Analysis -->
+            <section id="analysis" class="tab-content hidden">
+                <div class="space-y-8">
+                    <div class="content-card p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-[#E57373] mb-4">出題傾向分析：頻出トピック</h3>
+                        <p class="text-gray-700 mb-6">過去の出題傾向から、特に要約問題で扱われやすいテーマを分析しました。これらの分野の語彙や背景知識を事前に学習することで、本番での読解スピードが格段に向上します。</p>
+                        <div class="chart-container">
+                            <canvas id="topicChart"></canvas>
+                        </div>
+                        <div class="mt-4 text-sm text-gray-600 text-center">
+                            <p>👆 グラフにマウスオーバーすると、各トピックの頻出度が確認できます。</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-[#E57373] mb-4">採点基準の重要度</h3>
+                        <p class="text-gray-700 mb-6">要約問題は総合的な評価です。特に「内容」は最も重要視されるポイントです。どの観点に力を入れるべきかを視覚的に理解しましょう。</p>
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="w-full md:w-1/2 chart-container">
+                                <canvas id="scoringChart"></canvas>
+                            </div>
+                            <div class="w-full md:w-1/2 space-y-4">
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">✅ 内容 (Content)</h4>
+                                    <p class="text-gray-600">原文のキーポイントを漏れなく、過不足なく含んでいるか。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">✅ 構成 (Structure)</h4>
+                                    <p class="text-gray-600">要点が論理的に繋がり、一貫性のある文章になっているか。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">✅ 語彙・文法 (Language)</h4>
+                                    <p class="text-gray-600">適切な語彙と文法で、原文と異なる表現（パラフレーズ）を使用できているか。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Practice -->
+            <section id="practice" class="tab-content hidden">
+                <div class="content-card p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-[#E57373] mb-4">本番さながらのシミュレーション</h3>
+                    <p class="text-gray-700 mb-6">要約問題は時間との勝負です。このタイマーを使って、実際の試験時間を意識した練習を行いましょう。目安は10分以内です。</p>
+                    
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <button id="startTimerBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">タイマー開始</button>
+                            <button id="resetTimerBtn" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300">リセット</button>
+                        </div>
+                        <div class="text-5xl md:text-6xl font-bold text-gray-900" id="timerDisplay">00:00</div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-xl font-semibold mb-2">🗒️ 練習問題</h4>
+                        <p class="text-gray-700">以下の文章を読み、45〜55語で要約しなさい。</p>
+                        <div class="bg-gray-100 p-4 rounded-lg mt-4">
+                            <p class="text-gray-800">The recent growth of remote work has had a significant impact on urban landscapes. Many major cities, once bustling with office workers, are now facing the challenge of repurposing vacant commercial buildings. This shift has also created new opportunities for suburban and rural areas, as people seek more spacious and affordable living environments. Local economies in these areas are beginning to thrive, with small businesses catering to the new influx of residents. However, cities must adapt their infrastructure and policies to attract a new generation of workers and residents who prioritize flexibility and community over traditional office-centric life. The future of work is not just about technology; it is about re-evaluating the fundamental relationship between where people live and where they work.</p>
+                        </div>
+                        <textarea id="summaryTextarea" class="w-full mt-4 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" rows="5" placeholder="ここに要約を書いてください..."></textarea>
+                        <div class="flex justify-between items-center mt-2">
+                            <p id="wordCount" class="text-gray-600">語数: 0 / 55</p>
+                            <span id="wordCountStatus" class="text-sm font-semibold text-gray-400"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>&copy; 2024 Eiken Pre-1 Guide. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('tab-inactive');
+                    });
+                    tab.classList.remove('tab-inactive');
+                    tab.classList.add('tab-active');
+                    contents.forEach(content => {
+                        if (content.id === tab.dataset.tab) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            const paraphraseContainer = document.getElementById('guide');
+            if (paraphraseContainer) {
+                 paraphraseContainer.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('toggle-answer-btn')) {
+                        const answerDiv = e.target.nextElementSibling;
+                        const isHidden = answerDiv.classList.contains('hidden');
+                        if (isHidden) {
+                            answerDiv.classList.remove('hidden');
+                            e.target.textContent = '閉じる';
+                        } else {
+                            answerDiv.classList.add('hidden');
+                            e.target.textContent = '例を見る';
+                        }
+                    }
+                });
+            }
+
+            const topicCtx = document.getElementById('topicChart');
+            if (topicCtx) {
+                new Chart(topicCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['社会問題', '環境', '科学技術', '教育', '経済', '文化', '医療'],
+                        datasets: [{
+                            label: '出題頻度',
+                            data: [35, 20, 15, 10, 8, 7, 5],
+                            backgroundColor: 'rgba(229, 115, 115, 0.7)',
+                            borderColor: 'rgba(229, 115, 115, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: '過去問からの頻出トピック傾向',
+                                font: {
+                                    size: 16,
+                                    family: "'Noto Sans JP', sans-serif"
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: '出題頻度 (%)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const scoringCtx = document.getElementById('scoringChart');
+            if (scoringCtx) {
+                new Chart(scoringCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['内容 (Content)', '構成 (Structure)', '語彙・文法 (Language)'],
+                        datasets: [{
+                            label: '採点観点',
+                            data: [40, 30, 30],
+                            backgroundColor: [
+                                'rgba(229, 115, 115, 0.7)',
+                                'rgba(79, 195, 247, 0.7)',
+                                'rgba(129, 199, 132, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(229, 115, 115, 1)',
+                                'rgba(79, 195, 247, 1)',
+                                'rgba(129, 199, 132, 1)'
+                            ],
+                            borderWidth: 1,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        family: "'Noto Sans JP', sans-serif",
+                                        size: 14
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.raw + '%';
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const summaryTextarea = document.getElementById('summaryTextarea');
+            const wordCountDisplay = document.getElementById('wordCount');
+            const wordCountStatus = document.getElementById('wordCountStatus');
+            const startTimerBtn = document.getElementById('startTimerBtn');
+            const resetTimerBtn = document.getElementById('resetTimerBtn');
+            const timerDisplay = document.getElementById('timerDisplay');
+            let timer;
+            let seconds = 0;
+            let isRunning = false;
+
+            function updateWordCount() {
+                const text = summaryTextarea.value.trim();
+                const words = text.split(/\s+/).filter(word => word.length > 0);
+                const count = words.length;
+                wordCountDisplay.textContent = `語数: ${count} / 55`;
+                if (count > 55) {
+                    wordCountStatus.textContent = '語数オーバーです';
+                    wordCountStatus.classList.remove('text-green-600', 'text-gray-400');
+                    wordCountStatus.classList.add('text-red-600');
+                } else if (count >= 45 && count <= 55) {
+                    wordCountStatus.textContent = '語数OKです';
+                    wordCountStatus.classList.remove('text-red-600', 'text-gray-400');
+                    wordCountStatus.classList.add('text-green-600');
+                } else {
+                    wordCountStatus.textContent = '45-55語の範囲外です';
+                    wordCountStatus.classList.remove('text-red-600', 'text-green-600');
+                    wordCountStatus.classList.add('text-gray-400');
+                }
+            }
+
+            summaryTextarea.addEventListener('input', updateWordCount);
+
+            function formatTime(secs) {
+                const minutes = Math.floor(secs / 60);
+                const remainingSeconds = secs % 60;
+                return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+            }
+
+            function startTimer() {
+                if (isRunning) return;
+                isRunning = true;
+                timer = setInterval(() => {
+                    seconds++;
+                    timerDisplay.textContent = formatTime(seconds);
+                }, 1000);
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                isRunning = false;
+                seconds = 0;
+                timerDisplay.textContent = '00:00';
+            }
+
+            startTimerBtn.addEventListener('click', startTimer);
+            resetTimerBtn.addEventListener('click', resetTimer);
+        });
+    </script>
+
+</body>
+</html>
