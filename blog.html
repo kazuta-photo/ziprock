@@ -7,7 +7,7 @@
 
     <style>
         /* ==============
-         * 基本設定 & リセット
+         * 基本設定 & サイト共通のスタイル
          * ============== */
         html {
             scroll-behavior: smooth;
@@ -18,7 +18,7 @@
             background-color: #0c0c0c;
             color: #ffffff;
             font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-            font-size: 16px; /* PCでの基本フォントサイズ */
+            font-size: 16px;
         }
 
         a {
@@ -27,7 +27,7 @@
             transition: opacity 0.3s;
         }
         a:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         img {
@@ -36,7 +36,7 @@
         }
 
         /* ==============
-         * ヘッダー
+         * ヘッダー (全ページ共通)
          * ============== */
         .site-header {
             display: flex;
@@ -65,13 +65,13 @@
             font-size: 1rem;
             font-weight: 500;
         }
-        /* 現在のページを示す.activeクラス */
+        /* 現在表示しているページを分かりやすくするデザイン */
         .site-header .header-menu a.active {
             border-bottom: 2px solid #707070;
         }
 
         /* ==============
-         * メインコンテンツ (ニュースリスト)
+         * メインコンテンツ (このページ専用のスタイル)
          * ============== */
         main {
             padding: 60px 20px;
@@ -80,6 +80,7 @@
         .page-title {
             font-size: 2.2rem;
             text-align: center;
+            margin-top: 0;
             margin-bottom: 40px;
         }
 
@@ -102,7 +103,6 @@
             display: flex;
             align-items: center;
             padding: 20px 40px 20px 10px; /* 右側に矢印用のスペース */
-            color: #ffffff;
         }
 
         .news-list-date {
@@ -139,7 +139,7 @@
         }
 
         /* ==============
-         * トップへ戻るボタン
+         * トップへ戻るボタン (全ページ共通)
          * ============== */
         .pagetop {
             width: 60px;
@@ -166,16 +166,16 @@
             height: 100%;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
-            color: #333;
         }
         .pagetop a::before {
             content: "▲";
             font-size: 1.2rem;
             font-weight: bold;
+            color: #333;
         }
 
         /* ==============
-         * レスポンシブ対応 (画面幅が768px以下の場合)
+         * レスポンシブ対応 (全ページ共通)
          * ============== */
         @media screen and (max-width: 768px) {
             body {
@@ -223,4 +223,83 @@
 </head>
 <body>
 
-    <header class
+    <header class="site-header">
+        <div class="header-logo">
+            <a href="index.html"><img src="1745239922408~2.jpg" alt="zipRock Logo"></a>
+        </div>
+        <nav>
+            <ul class="header-menu">
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog/News</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Blog/News</h1>
+        <ul class="news-list">
+            <li class="news-list-item">
+                <a href="blogno4.html">
+                    <div class="news-list-date">
+                        <time>2025.05.18</time>
+                        <span class="news-category">blog</span>
+                    </div>
+                    <p class="news-title">エレキギター弦高調整</p>
+                    <span class="news-arrow"></span>
+                </a>
+            </li>
+            <li class="news-list-item">
+                <a href="blogno3.html">
+                    <div class="news-list-date">
+                        <time>2025.05.05</time>
+                        <span class="news-category">news</span>
+                    </div>
+                    <p class="news-title">2025文化祭ライブに参加表明、しかし...!?</p>
+                    <span class="news-arrow"></span>
+                </a>
+            </li>
+            <li class="news-list-item">
+                <a href="blogno2.html">
+                    <div class="news-list-date">
+                        <time>2025.05.05</time>
+                        <span class="news-category">blog</span>
+                    </div>
+                    <p class="news-title">練習中の曲について</p>
+                    <span class="news-arrow"></span>
+                </a>
+            </li>
+            <li class="news-list-item">
+                <a href="blogno1.html">
+                    <div class="news-list-date">
+                        <time>2025.05.05</time>
+                        <span class="news-category">news</span>
+                    </div>
+                    <p class="news-title">zipRock公式サイト開設</p>
+                    <span class="news-arrow"></span>
+                </a>
+            </li>
+        </ul>
+    </main>
+
+    <div class="pagetop">
+        <a href="#"></a>
+    </div>
+
+    <script>
+        'use strict';
+        // 「TOPへ戻る」ボタンのスクリプト
+        const pageTopBtn = document.querySelector('.pagetop');
+        window.addEventListener('scroll', () => {
+            // 300px以上スクロールしたらボタンを表示する
+            if (window.scrollY > 300) {
+                pageTopBtn.classList.add('is-active');
+            } else {
+                pageTopBtn.classList.remove('is-active');
+            }
+        });
+    </script>
+
+</body>
+</html>
